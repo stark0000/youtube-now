@@ -1,0 +1,114 @@
+body{
+    background: #000;
+    color: #DDD;
+    width:500px;
+    max-height: 700px;
+    min-height: 200px;
+}
+#reload{
+    width: 30%;
+}
+a{
+    color: #EEE;
+    text-decoration: none;
+}
+a:hover{
+    color:#FFF;
+}
+a:link{
+    color: #AAA;
+}
+a:visited{
+    color: #CCC;
+}
+a:active{
+    color:#EEE;
+}
+p{
+    display: inline-block;
+    margin:0px;
+    padding: 0px;
+
+}
+
+.liveitem{
+    background: #222;
+    font-family: sans-serif;
+}
+hr{
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-color: #2A2A2A;
+}
+.liveitem:hover{
+    background: #2A2A2A;
+}
+
+.lichannel{
+    font-size: 14px;
+    font-weight: bold;
+}
+.lititle{
+    font-size: 16px;
+    color:#666;
+}
+.lidesc{
+    font-size: 14px;
+    color:#666;
+}
+.lipic{
+    margin:4px;
+    width: 80px;
+}
+.elipsed{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 400px;
+}
+
+
+.btn {
+  font-family: Arial;
+  color: #bdbdbd;
+  font-size: 20px;
+  background: #222;
+  padding: 0px 15px 0px 0px;
+  border: solid #2A2A2A 2px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2A2A2A;
+  text-decoration: none;
+}
+
+#topdiv{
+    position: fixed;
+    top:0.5em;
+    background: #000;
+    width: 100%;
+    height:2.5em
+
+}
+#xdlol{
+    margin-top: 3em;
+
+}
+.tdin{
+    height:1.7em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#timerin{
+    width: 2em;
+    background: #444;
+    color: #AAA;
+    border-width: 0;
+}
+#timerisin{
+    width: 2em;
+    background: #222;
+    color: #666;
+    border-width: 0;
+}

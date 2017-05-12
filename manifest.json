@@ -1,0 +1,43 @@
+{
+    "manifest_version": 2,
+    "name": "YTN",
+    "description": "adaptation of TWITCH NOW for YOUTUBE by stark forow stark0000@gmail.com",
+    "version": "1",
+    "icons": {
+        "16": "img/ytn.png",
+        "48": "img/ytn.png",
+        "128": "img/ytn.png"
+    },
+    "permissions": [
+        "identity",
+        "notifications",
+        "storage",
+        "alarms",
+        "https://www.googleapis.com/*",
+        "https://*.googleusercontent.com/*",
+        "https://www.youtube.com/*"
+    ],
+    "background": {
+        "scripts": [
+            "js/background.js"
+        ]
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "img/ytn.png",
+            "38": "img/ytn.png"
+        },
+        "default_title": "see which of your subs are live",
+        "default_popup": "js/popup.html"
+    },
+    "web_accessible_resources":[
+        "ytn.css"
+    ],
+    "oauth2": {
+        "client_id": "{YOUR_CLIENT_ID}",
+        "scopes": [
+            "profile"
+        ]
+    },
+    "key": "{YOUR_APP_KEY}"
+}
