@@ -7,6 +7,7 @@ use at your own risks
 made for opera (43), should be clumsily working on ff & chrome
 
 see console.developers.google.com for app keys generation and oauth2 chrome.identity for app key, glhf
+
 -------------------------------------------------------------------------------------------------------
 install:
 -------------------------------------------------------------------------------------------------------
