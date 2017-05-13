@@ -8,6 +8,11 @@
         "48": "img/ytn.png",
         "128": "img/ytn.png"
     },
+    "applications": {
+        "gecko": {
+            "id": "ytn.stark0000"
+        }
+    },
     "permissions": [
         "identity",
         "notifications",

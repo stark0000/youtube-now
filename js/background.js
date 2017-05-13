@@ -1,19 +1,34 @@
-chrome.browserAction.setBadgeBackgroundColor({
-    color: '#555'
-});
-chrome.browserAction.setBadgeText({
-    text: '0'
-});
 
-var CLIENT_ID = {YOUR_CLIENT_ID}
+
 var GOOGLE_KEY = {YOUR_GOOGLE_KEY}
+var CLIENT_ID = {YOUR_CLIENT_ID}
+var BASE_URL = 'https://www.googleapis.com/youtube/v3/'
+var SUBS_URL = 'subscriptions?part=snippet&mine=true'
+var SPEC_URL = '&maxResults=50&key=' + GOOGLE_KEY
+
+var SUBS_P1 = BASE_URL + SUBS_URL + SPEC_URL
+var SUBS_T1 = BASE_URL + 'subscriptions?pageToken='
+var SUBS_T2 = '&part=snippet&mine=true' + SPEC_URL
+
+var LIVE_L1 = BASE_URL + 'search?part=snippet&channelId='
+var LIVE_L2 = '&type=video&eventType=live%7Cupcoming' + SPEC_URL
+
+var xdlol = document.getElementById('xdlol');
+var fetchstatus = document.getElementById('fetchstatus');
+
+var testb1 = document.getElementById('t1');
+var testb2 = document.getElementById('t2');
 
 
+var logerr = document.getElementById('log');
 
-// If you make changes here, you have to reload the extension (in settings) for them to take effect
+var subsId = []
+var stillOn = []
+var loop = true
 
-// Any function in this file can be referenced elsewhere by using chrome.extension.getBackgroundPage().myFunction()
-// For example, you can reference the login function as chrome.extension.getBackgroundPage().login()
+var isfetching = false
+var islogged = false
+
 
 var config = {
     implicitGrantUrl: 'https://accounts.google.com/o/oauth2/v2/auth',
@@ -25,6 +40,22 @@ var config = {
 var token = null;
 var logger = console;
 var timeout;
+
+
+
+
+
+
+chrome.browserAction.setBadgeBackgroundColor({
+    color: '#555'
+});
+chrome.browserAction.setBadgeText({
+    text: '0'
+});
+// If you make changes here, you have to reload the extension (in settings) for them to take effect
+
+// Any function in this file can be referenced elsewhere by using chrome.extension.getBackgroundPage().myFunction()
+// For example, you can reference the login function as chrome.extension.getBackgroundPage().login()
 
 function init(cfg, log) {
     config = cfg;
@@ -104,30 +135,6 @@ function parse(str) {
 
 
 //==========================================================================
-
-var BASE_URL = 'https://www.googleapis.com/youtube/v3/'
-var SUBS_URL = 'subscriptions?part=snippet&mine=true'
-var SPEC_URL = '&maxResults=50&key=' + GOOGLE_KEY
-
-var SUBS_P1 = BASE_URL + SUBS_URL + SPEC_URL
-var SUBS_T1 = BASE_URL + 'subscriptions?pageToken='
-var SUBS_T2 = '&part=snippet&mine=true' + SPEC_URL
-
-var LIVE_L1 = BASE_URL + 'search?part=snippet&channelId='
-var LIVE_L2 = '&type=video&eventType=live%7Cupcoming' + SPEC_URL
-
-var xdlol = document.getElementById('xdlol');
-var fetchstatus = document.getElementById('fetchstatus');
-
-var testb1 = document.getElementById('t1');
-var testb2 = document.getElementById('t2');
-
-
-var logerr = document.getElementById('log');
-
-var subsId = []
-var stillOn = []
-var loop = true
 
 
 function loginidentity() {
@@ -381,21 +388,11 @@ function removeOfflines() {
 }
 
 
-var isfetching = false
-var islogged = false
-
 function isLogged() {
     return islogged
 }
 function setLogged(b) {
     islogged = b
-    if (isPopupOpen()) {
-        if (b) {
-            getlockin().src = '../img/lockok.svg'
-        } else {
-            getlockin().src = '../img/lockno.svg'
-        }
-    }
 }
 
 function isFetching() {
@@ -446,7 +443,7 @@ function endFetch() {
     console.log("end fetch")
     if (isReset()) {
 
-        timeout = setTimeout(runsubs, getTimerSync())
+        timeout = setTimeout(loginidentity, getTimerSync())
     }
 }
 
@@ -529,13 +526,6 @@ function getLogger() {
     return null
 }
 
-function getlockin() {
-    var popups = chrome.extension.getViews({ type: "popup" });
-    if (0 < popups.length) {
-        return popups[0].document.getElementById('lockin');
-    }
-    return null
-}
 function getReloadin() {
     var popups = chrome.extension.getViews({ type: "popup" });
     if (0 < popups.length) {

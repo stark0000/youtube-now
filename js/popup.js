@@ -2,7 +2,6 @@
 
 
 var resetin = document.getElementById("resetin")
-var lockin = document.getElementById("lockin")
 var reloadin = document.getElementById("reloadin")
 
 var timerin = document.getElementById("timerin")
@@ -24,14 +23,6 @@ resetin.onmouseover = function () {
 }
 resetin.onmouseout = function () {
   chrome.extension.getBackgroundPage().setReset(chrome.extension.getBackgroundPage().isReset())
-}
-
-//login/out
-lockin.onmouseover = function () {
-  this.src = '../img/lockh.svg'
-}
-lockin.onmouseout = function () {
-  chrome.extension.getBackgroundPage().setLogged(chrome.extension.getBackgroundPage().isLogged())
 }
 
 //fetch
@@ -60,13 +51,9 @@ resetin
   .addEventListener("click"
   , chrome.extension.getBackgroundPage().switchloop);
 
-lockin
-  .addEventListener("click"
-  , chrome.extension.getBackgroundPage().loginidentity);
-
 reloadin
   .addEventListener("click"
-  , chrome.extension.getBackgroundPage().runsubs);
+  , chrome.extension.getBackgroundPage().loginidentity);
 
 
 
