@@ -1,7 +1,7 @@
 
 
-var GOOGLE_KEY = {YOUR_GOOGLE_KEY}
-var CLIENT_ID = {YOUR_CLIENT_ID}
+var GOOGLE_KEY = { YOUR_GOOGLE_KEY }
+var CLIENT_ID = { YOUR_CLIENT_ID }
 var BASE_URL = 'https://www.googleapis.com/youtube/v3/'
 var SUBS_URL = 'subscriptions?part=snippet&mine=true'
 var SPEC_URL = '&maxResults=50&key=' + GOOGLE_KEY
@@ -419,6 +419,11 @@ function setReset(b) {
             getResetin().src = '../img/resetno.svg'
         }
     }
+    if (!b) {
+        if (isReset()) {
+            timeout = setTimeout(loginidentity, getTimerSync())
+        }
+    }
 }
 
 
@@ -441,10 +446,6 @@ function endFetch() {
     }
     setFetching(false)
     console.log("end fetch")
-    if (isReset()) {
-
-        timeout = setTimeout(loginidentity, getTimerSync())
-    }
 }
 
 
@@ -555,12 +556,12 @@ function getTimerisin() {
     return null
 }
 
-var synctimer = 10*60*1000
-function getTimerSync(){
+var synctimer = 10 * 60 * 1000
+function getTimerSync() {
     return synctimer;
 }
-function setTimerSync(timer){
-    synctimer=timer*60*1000
+function setTimerSync(timer) {
+    synctimer = timer * 60 * 1000
 }
 
 function getTimer() {
